@@ -21,8 +21,7 @@
                 <HBox>
                     <Label text="Your Lists" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
                     <Region HBox.hgrow="ALWAYS" />
-                    <Button text="+" />
-                </HBox>
+                    <Button text="+" onAction="#onAddListButtonClick" />                </HBox>
                 <!-- Your lists go here -->
             </VBox>
             <VBox fx:id="sharedLists" spacing="10.0" style="-fx-background-color: #f0f0f0; -fx-padding: 10px;">

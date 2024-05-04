@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.client.AddListController" stylesheets="@styles.css">    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    <top>
+        <HBox>
+            <Label text="Add List Page" style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-padding: 10px;"/>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button text="Confirm" onAction="#onConfirmButtonClick" />
+            <Button text="←" styleClass="back-button" onAction="#onBackButtonClick" />
+        </HBox>
+    </top>
+    <center>
+        <HBox spacing="20.0">
+            <VBox fx:id="productsToBuy" spacing="10.0" style="-fx-background-color: #f0f0f0; -fx-padding: 10px;">
+                <HBox>
+                    <Label text="Products to Buy" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                    <Region HBox.hgrow="ALWAYS" />
+                </HBox>
+                <!-- Products to buy go here -->
+            </VBox>
+            <VBox fx:id="addedProducts" spacing="10.0" style="-fx-background-color: #f0f0f0; -fx-padding: 10px;">
+                <HBox>
+                    <Label text="Added Products" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                    <Region HBox.hgrow="ALWAYS" />
+                </HBox>
+                <!-- Added products go here -->
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

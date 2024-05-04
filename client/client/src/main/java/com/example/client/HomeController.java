@@ -7,6 +7,8 @@ import javafx.scene.layout.Priority;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
 
+import java.io.IOException;
+
 public class HomeController {
     @FXML
     private VBox yourLists;
@@ -24,5 +26,10 @@ public class HomeController {
 
         HBox.setHgrow(yourLists, Priority.ALWAYS);
         HBox.setHgrow(sharedLists, Priority.ALWAYS);
+    }
+
+    @FXML
+    protected void onAddListButtonClick() throws IOException {
+        HelloApplication.setRoot("addlist-view");
     }
 }
