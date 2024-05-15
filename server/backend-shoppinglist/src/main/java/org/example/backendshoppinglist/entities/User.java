@@ -25,14 +25,13 @@ public class User implements UserDetails {
     private String password;
     @Column(nullable = false, unique = true)
     private String email;
-    @Column(nullable = false)
-    private String role;
+
     @CreationTimestamp
     @Column(nullable = false, updatable = false, name = "created_at")
     private Date createdAt;
 
     @UpdateTimestamp
-    @Column(nullable = false, updatable = false, name = "edited_at")
+    @Column(nullable = false, name = "edited_at")
     private Date editedAt;
 
 
@@ -100,14 +99,6 @@ public class User implements UserDetails {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 
     public Date getCreatedAt() {
