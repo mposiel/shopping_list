@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -34,6 +35,8 @@ public class User implements UserDetails {
     @Column(nullable = false, name = "edited_at")
     private Date editedAt;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private Set<UserShoppingList> shoppingLists;
 
     public User() {
     }
@@ -83,7 +86,13 @@ public class User implements UserDetails {
         this.username = username;
     }
 
+    public Set<UserShoppingList> getShoppingLists() {
+        return shoppingLists;
+    }
 
+    public void setShoppingLists(Set<UserShoppingList> shoppingLists) {
+        this.shoppingLists = shoppingLists;
+    }
 
     public String getPassword() {
         return password;

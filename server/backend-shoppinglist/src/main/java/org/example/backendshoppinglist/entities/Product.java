@@ -2,9 +2,12 @@ package org.example.backendshoppinglist.entities;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.util.Set;
+
 @Entity
 @Table(name = "products")
-public class Product {
+public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
@@ -16,6 +19,9 @@ public class Product {
     private String unit;
     @Column(nullable = false)
     private boolean isUnitInteger;
+    @OneToMany(mappedBy = "product")
+    private Set<ShoppingListProduct> shoppingListProducts;
+
 
     public Product() {
     }
@@ -48,5 +54,13 @@ public class Product {
 
     public void setUnitInteger(boolean unitInteger) {
         isUnitInteger = unitInteger;
+    }
+
+    public Set<ShoppingListProduct> getShoppingListProducts() {
+        return shoppingListProducts;
+    }
+
+    public void setShoppingListProducts(Set<ShoppingListProduct> shoppingListProducts) {
+        this.shoppingListProducts = shoppingListProducts;
     }
 }
