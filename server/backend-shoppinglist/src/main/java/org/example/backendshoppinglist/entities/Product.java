@@ -63,4 +63,12 @@ public class Product implements Serializable {
     public void setShoppingListProducts(Set<ShoppingListProduct> shoppingListProducts) {
         this.shoppingListProducts = shoppingListProducts;
     }
+
+    public Integer getId() {
+        return this.id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }
