@@ -6,15 +6,18 @@ import jakarta.persistence.*;
 @Table(name = "user_list")
 
 public class UserShoppingList {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+
+    @EmbeddedId
+
+    private UserShoppingListKey id;
 
     @ManyToOne
+    @MapsId("listId")
     @JoinColumn(name = "list_id")
     private ShoppingList shoppingList;
 
     @ManyToOne
+    @MapsId("userId")
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -24,6 +27,13 @@ public class UserShoppingList {
     public UserShoppingList() {
     }
 
+    public UserShoppingListKey getId() {
+        return id;
+    }
+
+    public void setId(UserShoppingListKey id) {
+        this.id = id;
+    }
     public ShoppingList getShoppingList() {
         return shoppingList;
     }
@@ -47,5 +57,6 @@ public class UserShoppingList {
     public void setRole(ListRole role) {
         this.role = role;
     }
+
 
 }

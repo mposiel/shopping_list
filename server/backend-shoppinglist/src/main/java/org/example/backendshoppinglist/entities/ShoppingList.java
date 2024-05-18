@@ -48,4 +48,14 @@ public class ShoppingList implements Serializable {
     public void setUsers(Set<UserShoppingList> users) {
         this.users = users;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+
 }
