@@ -81,7 +81,24 @@ public class ShoppingListService {
         }
     }
 
+    public boolean existsById(Integer id) {
+        Optional<User> user = userService.getLoggedInUser();
+        if(user.isPresent()) {
+            return userShoppingListRepository.existsById(new UserShoppingListKey(id, user.get().getId()));
+        } else {
+            throw new IllegalArgumentException("User not found");
+        }
+    }
 
 
-
+    public ShoppingListDto deleteList(Integer id) {
+        Optional<User> user = userService.getLoggedInUser();
+        if(user.isPresent()) {
+            ShoppingListDto shoppingListDto = getList(id);
+            userShoppingListRepository.deleteById(new UserShoppingListKey(id, user.get().getId()));
+            return shoppingListDto;
+        } else {
+            throw new IllegalArgumentException("User not found");
+        }
+    }
 }

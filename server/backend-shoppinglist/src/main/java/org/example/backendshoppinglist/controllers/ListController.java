@@ -34,5 +34,14 @@ public class ListController {
         return ResponseEntity.ok(shoppingListService.getList(id));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteList(@PathVariable Integer id) {
+        if (!shoppingListService.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        shoppingListService.deleteList(id);
+        return ResponseEntity.ok().build();
+    }
+
 
 }
