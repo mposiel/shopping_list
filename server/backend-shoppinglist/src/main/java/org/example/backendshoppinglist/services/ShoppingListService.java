@@ -101,4 +101,21 @@ public class ShoppingListService {
             throw new IllegalArgumentException("User not found");
         }
     }
+
+    public ShoppingListDto updateList(Integer id, ShoppingListDto shoppingListDto) {
+        Optional<User> user = userService.getLoggedInUser();
+        if(user.isPresent()) {
+            Optional<UserShoppingList> userShoppingList = userShoppingListRepository.findById(new UserShoppingListKey(id, user.get().getId()));
+            if(userShoppingList.isPresent()) {
+                ShoppingList shoppingList = shoppingListDtoConverter.convertToEntity(shoppingListDto);
+                shoppingList.setId(id);
+                shoppingList = shoppingListRepository.save(shoppingList);
+                return shoppingListDtoConverter.convertToDto(shoppingList);
+            } else {
+                throw new IllegalArgumentException("Shopping list not found");
+            }
+        } else {
+            throw new IllegalArgumentException("User not found");
+        }
+    }
 }

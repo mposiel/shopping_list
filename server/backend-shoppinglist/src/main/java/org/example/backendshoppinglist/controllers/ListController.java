@@ -43,5 +43,10 @@ public class ListController {
         return ResponseEntity.ok().build();
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ShoppingListDto> updateList(@PathVariable Integer id, @RequestBody ShoppingListDto shoppingListDto) {
+        return ResponseEntity.ok(shoppingListService.updateList(id, shoppingListDto));
+    }
+
 
 }
