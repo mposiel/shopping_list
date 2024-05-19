@@ -8,7 +8,6 @@ import jakarta.persistence.*;
 public class UserShoppingList {
 
     @EmbeddedId
-
     private UserShoppingListKey id;
 
     @ManyToOne

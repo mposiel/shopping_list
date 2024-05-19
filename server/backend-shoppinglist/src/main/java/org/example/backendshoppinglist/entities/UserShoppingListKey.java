@@ -2,9 +2,6 @@ package org.example.backendshoppinglist.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.criteria.CriteriaBuilder;
 
 import java.io.Serializable;
 

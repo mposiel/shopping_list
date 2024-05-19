@@ -29,5 +29,10 @@ public class ListController {
         return ResponseEntity.ok(shoppingListService.getAllLists());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<ShoppingListDto> getList(@PathVariable Integer id) {
+        return ResponseEntity.ok(shoppingListService.getList(id));
+    }
+
 
 }

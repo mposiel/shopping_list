@@ -1,5 +1,6 @@
 package org.example.backendshoppinglist.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -16,10 +17,12 @@ public class ShoppingList implements Serializable {
     @Column(nullable = false)
     private String shoppingListName;
 
-    @OneToMany(mappedBy = "shoppingList")
+    @OneToMany(mappedBy = "shoppingList", fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<ShoppingListProduct> shoppingListProducts;
 
-    @OneToMany(mappedBy = "shoppingList")
+    @OneToMany(mappedBy = "shoppingList", fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<UserShoppingList> users;
 
     public ShoppingList() {

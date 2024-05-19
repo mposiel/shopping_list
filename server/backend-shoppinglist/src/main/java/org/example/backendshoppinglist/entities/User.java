@@ -1,5 +1,6 @@
 package org.example.backendshoppinglist.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -35,7 +36,8 @@ public class User implements UserDetails {
     @Column(nullable = false, name = "edited_at")
     private Date editedAt;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<UserShoppingList> shoppingLists;
 
     public User() {

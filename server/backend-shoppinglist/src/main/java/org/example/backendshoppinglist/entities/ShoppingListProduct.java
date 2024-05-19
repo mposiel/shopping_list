@@ -8,15 +8,16 @@ import java.io.Serializable;
 @Table(name = "list_product")
 public class ShoppingListProduct implements Serializable{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @EmbeddedId
+    private ShoppingListProductKey id;
 
     @ManyToOne
+    @MapsId("listId")
     @JoinColumn(name = "list_id")
     private ShoppingList shoppingList;
 
     @ManyToOne
+    @MapsId("productId")
     @JoinColumn(name = "product_id")
     private Product product;
 
