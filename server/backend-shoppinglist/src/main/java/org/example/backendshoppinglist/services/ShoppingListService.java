@@ -94,12 +94,10 @@ public class ShoppingListService {
     }
 
 
-    public ShoppingListDto deleteList(Integer id) {
+    public void deleteList(Integer id) {
         Optional<User> user = userService.getLoggedInUser();
         if(user.isPresent()) {
-            ShoppingListDto shoppingListDto = getList(id);
             userShoppingListRepository.deleteById(new UserShoppingListKey(id, user.get().getId()));
-            return shoppingListDto;
         } else {
             throw new IllegalArgumentException("User not found");
         }
