@@ -32,11 +32,14 @@ public class ShoppingListService {
             ShoppingList shoppingList = shoppingListDtoConverter.convertToEntity(shoppingListDto);
             shoppingList = shoppingListRepository.save(shoppingList);
 
-            UserShoppingList userShoppingList = new UserShoppingList();
-            userShoppingList.setUser(user.get());
-            userShoppingList.setShoppingList(shoppingList);
-            userShoppingList.setRole(ListRole.OWNER);
-            userShoppingList.setId(new UserShoppingListKey(user.get().getId(), shoppingList.getId()));
+            UserShoppingList userShoppingList = new UserShoppingList(
+                    new UserShoppingListKey(
+                            user.get().getId(),
+                            shoppingList.getId()),
+                    shoppingList,
+                    user.get(),
+                    ListRole.OWNER
+            );
 
             userShoppingListRepository.save(userShoppingList);
 

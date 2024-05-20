@@ -26,6 +26,13 @@ public class UserShoppingList {
     public UserShoppingList() {
     }
 
+    public UserShoppingList(UserShoppingListKey id, ShoppingList shoppingList, User user, ListRole role) {
+        this.id = id;
+        this.shoppingList = shoppingList;
+        this.user = user;
+        this.role = role;
+    }
+
     public UserShoppingListKey getId() {
         return id;
     }
@@ -33,6 +40,7 @@ public class UserShoppingList {
     public void setId(UserShoppingListKey id) {
         this.id = id;
     }
+
     public ShoppingList getShoppingList() {
         return shoppingList;
     }
