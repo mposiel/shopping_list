@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "list_product")
-public class ShoppingListProduct implements Serializable{
+public class ShoppingListProduct implements Serializable {
 
     @EmbeddedId
     private ShoppingListProductKey id;
@@ -22,9 +22,16 @@ public class ShoppingListProduct implements Serializable{
     private Product product;
 
     @Column(nullable = false)
-    private int quantity;
+    private Integer quantity;
 
     public ShoppingListProduct() {
+    }
+
+    public ShoppingListProduct(ShoppingListProductKey id, ShoppingList shoppingList, Product product, int quantity) {
+        this.id = id;
+        this.shoppingList = shoppingList;
+        this.product = product;
+        this.quantity = quantity;
     }
 
     public ShoppingList getShoppingList() {
@@ -43,11 +50,11 @@ public class ShoppingListProduct implements Serializable{
         this.product = product;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 }

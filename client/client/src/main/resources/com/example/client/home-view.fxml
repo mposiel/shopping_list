@@ -8,6 +8,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Region?>
 
+<?import javafx.scene.control.ListView?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.client.HomeController">
     <padding>
         <Insets top="10" right="10" bottom="10" left="10"/>
@@ -21,8 +24,16 @@
                 <HBox>
                     <Label text="Your Lists" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
                     <Region HBox.hgrow="ALWAYS" />
-                    <Button text="+" onAction="#onAddListButtonClick" />                </HBox>
+                    <Button text="+" onAction="#onAddListButtonClick" />
+                </HBox>
                 <!-- Your lists go here -->
+                <ListView fx:id="list1">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+
+                        </FXCollections>
+                    </items>
+                </ListView>
             </VBox>
             <VBox fx:id="sharedLists" spacing="10.0" style="-fx-background-color: #f0f0f0; -fx-padding: 10px;">
                 <HBox>

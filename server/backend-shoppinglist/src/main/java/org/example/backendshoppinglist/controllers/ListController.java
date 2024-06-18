@@ -1,8 +1,8 @@
 package org.example.backendshoppinglist.controllers;
 
-import org.example.backendshoppinglist.dtos.ProductDto;
+import org.example.backendshoppinglist.dtos.AddProductToListDto;
+import org.example.backendshoppinglist.dtos.GetProductInListDto;
 import org.example.backendshoppinglist.dtos.ShoppingListDto;
-import org.example.backendshoppinglist.entities.ShoppingList;
 import org.example.backendshoppinglist.services.ShoppingListService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -34,6 +34,11 @@ public class ListController {
         return ResponseEntity.ok(shoppingListService.getList(id));
     }
 
+    @GetMapping("/userList")
+    public ResponseEntity<List<ShoppingListDto>> getUserSharedLists() {
+        return ResponseEntity.ok(shoppingListService.getUserSharedLists());
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteList(@PathVariable Integer id) {
         if (!shoppingListService.existsById(id)) {
@@ -48,5 +53,14 @@ public class ListController {
         return ResponseEntity.ok(shoppingListService.updateList(id, shoppingListDto));
     }
 
+    @PostMapping("/{listId}/products")
+    public ResponseEntity<AddProductToListDto> addProductToList(@PathVariable Integer listId, @RequestBody AddProductToListDto addProductToListDto) {
+        return ResponseEntity.ok(shoppingListService.addProductToList(listId, addProductToListDto));
+    }
+
+    @GetMapping("/{listId}/products")
+    public ResponseEntity<List<GetProductInListDto>> getProductsFromList(@PathVariable Integer listId) {
+        return ResponseEntity.ok(shoppingListService.getProductsFromList(listId));
+    }
 
 }

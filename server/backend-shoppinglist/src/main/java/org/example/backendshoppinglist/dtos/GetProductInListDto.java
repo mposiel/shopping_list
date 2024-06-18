@@ -1,19 +1,21 @@
 package org.example.backendshoppinglist.dtos;
 
-public class ProductDto {
+public class GetProductInListDto {
     private Integer id;
     private String productName;
     private String unit;
     private boolean isUnitInteger;
+    private Integer quantity;
 
-    public ProductDto(Integer id, String productName, String unit, boolean isUnitInteger) {
+    public GetProductInListDto() {
+    }
+
+    public GetProductInListDto(Integer id, String productName, String unit, boolean isUnitInteger, Integer quantity) {
         this.id = id;
         this.productName = productName;
         this.unit = unit;
         this.isUnitInteger = isUnitInteger;
-    }
-
-    public ProductDto() {
+        this.quantity = quantity;
     }
 
     public Integer getId() {
@@ -46,5 +48,13 @@ public class ProductDto {
 
     public void setUnitInteger(boolean unitInteger) {
         isUnitInteger = unitInteger;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

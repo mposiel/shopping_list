@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.Label?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.client.RegisterController">
     <padding>
@@ -13,6 +14,9 @@
     </padding>
 
     <TextField fx:id="usernameField" promptText="Username"/>
+    <TextField fx:id="fullNameField" promptText="Full Name"/>
     <PasswordField fx:id="passwordField" promptText="Password"/>
+    <Label fx:id="errorMessage" textFill="RED"/>
+
     <Button text="Register" onAction="#onRegisterButtonClick"/>
 </VBox>

@@ -46,4 +46,11 @@ public class ShoppingListProductKey implements Serializable {
         if (listId != null ? !listId.equals(that.listId) : that.listId != null) return false;
         return productId != null ? productId.equals(that.productId) : that.productId == null;
     }
+
+    @Override
+    public int hashCode() {
+        int result = listId != null ? listId.hashCode() : 0;
+        result = 31 * result + (productId != null ? productId.hashCode() : 0);
+        return result;
+    }
 }

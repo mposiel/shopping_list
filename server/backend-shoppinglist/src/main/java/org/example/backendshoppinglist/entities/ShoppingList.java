@@ -2,6 +2,7 @@ package org.example.backendshoppinglist.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.springframework.context.annotation.Configuration;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -17,11 +18,11 @@ public class ShoppingList implements Serializable {
     @Column(nullable = false)
     private String shoppingListName;
 
-    @OneToMany(mappedBy = "shoppingList", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "shoppingList", fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<ShoppingListProduct> shoppingListProducts;
 
-    @OneToMany(mappedBy = "shoppingList", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "shoppingList", fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<UserShoppingList> users;
 
